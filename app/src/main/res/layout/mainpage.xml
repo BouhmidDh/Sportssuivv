@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Titre -->
+    <TextView
+        android:id="@+id/tvTitleHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Historique des activités"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:padding="8dp"/>
+
+    <!-- Liste des activités -->
+    <ListView
+        android:id="@+id/listActivities"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Champ pour nouvelle activité -->
+    <EditText
+        android:id="@+id/etNewActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nouvelle activité (ex: Footing 30min)"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Sélecteur de date -->
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Bouton ajouter -->
+    <Button
+        android:id="@+id/btnAddActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter activité"
+        android:textSize="16sp"/>
+
+</LinearLayout>
