@@ -9,15 +9,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ComposantGUIActivity extends AppCompatActivity {
+public class ComposantGUIActivityy extends AppCompatActivity {
+
     private EditText etEmail, etPassword;
     private Button btnConnect, btnInscrire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.firstpage);
-
+        setContentView(R.layout.firstpagee);
+        Intent myLocalIntent = getIntent();
+        Bundle myBundle = myLocalIntent.getExtras();
+        String etNameReceiver = myBundle.getString("NEW_USER_NAME");
+        String etPasswordReceiver = myBundle.getString("NEW_USER_PASSWORD");
+        String etEmailReceiver = myBundle.getString("NEW_USER_EMAIL");
+        etEmail.setText(etEmailReceiver);
+        etPassword.setText(etPasswordReceiver);
         initViews();
         setupListeners();
     }
@@ -40,7 +47,7 @@ public class ComposantGUIActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Ouvrir l'activité d'inscription
-                Intent intent = new Intent(ComposantGUIActivity.this, InscriptionActivity.class);
+                Intent intent = new Intent(ComposantGUIActivityy.this, InscriptionActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,8 +72,11 @@ public class ComposantGUIActivity extends AppCompatActivity {
             showToast("Connexion réussie !");
 
             // Ouvrir l'activité historique après connexion
-            Intent intent = new Intent(ComposantGUIActivity.this, ComposantGUIActivity.class);
-            intent.putExtra("USER_EMAIL", email);
+            Intent intent = new Intent(ComposantGUIActivityy.this, ComposantGUIActivityy.class);
+            //une autre methode intent.putExtra("USER_EMAIL", email);
+            Bundle extras = new Bundle();
+            extras.putString("USER_EMAIL", email);
+            intent.putExtras(extras);
             startActivity(intent);
             finish(); // Fermer l'activité de connexion
         } else {

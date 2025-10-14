@@ -16,18 +16,18 @@ public class InscriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inscription);
+        setContentView(R.layout.inscriptionn);
 
         initViews();
         setupListeners();
     }
 
     private void initViews() {
-        etName = findViewById(R.id.etName);
+        etName = findViewById(R.id.etNom);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.btnInscrire);
     }
 
     private void setupListeners() {
@@ -69,8 +69,13 @@ public class InscriptionActivity extends AppCompatActivity {
         showToast("Inscription réussie pour " + name);
 
         // Retour à l'activité de connexion
-        Intent intent = new Intent(InscriptionActivity.this, ComposantGUIActivity.class);
-        intent.putExtra("NEW_USER_EMAIL", email);
+        Intent intent = new Intent(InscriptionActivity.this, MainActivity.class);
+        //intent.putExtra("NEW_USER_EMAIL", email);
+        Bundle bundle = new Bundle();
+        bundle.putString("NEW_USER_NAME", name);
+        bundle.putString("NEW_USER_PASSWORD", password);
+        bundle.putString("NEW_USER_EMAIL", email);
+        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
@@ -84,12 +89,12 @@ public class InscriptionActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        // Retour à l'écran de connexion
-        Intent intent = new Intent(this, ComposantGUIActivity.class);
-        startActivity(intent);
-        finish();
-    }
+//    @Override
+//    public void onBackPressedDispatcher() {
+//        super.getOnBackPressedDispatcher();
+//        // Retour à l'écran de connexion
+//        Intent intent = new Intent(this, ComposantGUIActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 }
